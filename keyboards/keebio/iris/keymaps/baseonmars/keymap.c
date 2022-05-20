@@ -5,6 +5,7 @@
 #define _LOWER 1
 #define _RAISE 2
 #define _ADJUST 3
+#define _STENO 4
 
 
 enum custom_keycodes {
@@ -12,6 +13,7 @@ enum custom_keycodes {
   LOWER,
   RAISE,
   ADJUST,
+  STENO
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -24,7 +26,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      KC_LSPO, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                               KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_LCTL, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_LGUI,           KC_ENT,  KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSPC,
+     KC_LCTL, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_LGUI,           STENO,  KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSPC,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     RAISE, LOWER,   KC_SPACE,                    KC_ENT,  KC_RGUI,   KC_LALT
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -38,7 +40,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      KC_LSFT,  KC_P1,   KC_P2,   KC_P3,   KC_KP_PLUS,   _______,                            KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, KC_HOME, KC_PGDOWN,
   //├────────┼────────┼────────┼────────┼────────┼───────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_LCTL, KC_NUMLOCK,   KC_KP_0,   KC_KP_DOT,  KC_KP_MINUS, _______, KC_LGUI,          KC_ENTER, _______, _______,   _______,   _______,   KC_END, KC_RSHIFT,
+     KC_LCTL, KC_NUMLOCK,   KC_KP_0,   KC_KP_DOT,  KC_KP_MINUS, _______, KC_LGUI,          STENO, _______, _______,   _______,   _______,   KC_END, KC_RSHIFT,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     ADJUST, _______, KC_SPACE,                    KC_ENTER,  KC_RGUI, KC_LALT
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -52,7 +54,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      RGB_MOD, KC_NO, KC_NO, KC_NO, KC_LBRC, KC_RBRC,                            KC_LBRC,  KC_RBRC, _______, _______, _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_LCTL, KC_NO, KC_NO, KC_NO, KC_LPRN, KC_RPRN, _______,          KC_ENTER, KC_LPRN,  KC_RPRN,  _______, _______, _______, _______,
+     KC_LCTL, KC_NO, KC_NO, KC_NO, KC_LPRN, KC_RPRN, _______,          STENO, KC_LPRN,  KC_RPRN,  _______, _______, _______, _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     _______, ADJUST, KC_SPACE,                   KC_ENTER, KC_LALT, KC_RGUI
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -66,9 +68,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      _______, _______, _______, _______, _______, _______,                            _______, _______, _______, _______, _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, _______, _______, _______, _______, _______, _______,          _______, CG_NORM, RCG_SWP, _______, _______, _______, _______,
+     _______, _______, _______, _______, _______, _______, _______,          STENO, CG_NORM, RCG_SWP, _______, _______, _______, _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     _______, _______, _______,                   _______, _______, _______
+                                // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
+  ),
+
+  [_STENO] = LAYOUT(
+  //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
+     QWERTY,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                               KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
+  //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
+     _______,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                               KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
+  //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
+     KC_LSPO, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                               KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+     KC_LCTL, _______, _______, _______, _______,  _______,    KC_LGUI,      STENO,  _______,  _______,_______, _______, _______, KC_ENTER,
+  //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
+                                     KC_SPACE,     KC_V,   KC_B,                  KC_N,   KC_M,    KC_ENTER
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   )
 };
@@ -77,6 +93,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case QWERTY:
       if (record->event.pressed) {
+        layer_off(_STENO);
         set_single_persistent_default_layer(_QWERTY);
       }
       return false;
@@ -109,27 +126,33 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
+    case STENO:
+      if(record->event.pressed) {
+          layer_on(_STENO);
+      }
+      return false;
+      break;
   }
   return true;
 }
 
-bool encoder_update_user(uint8_t index, bool clockwise) {
-    if (index == 0) {
-        if (clockwise) {
-            tap_code(KC_VOLU);
-        } else {
-            tap_code(KC_VOLD);
-        }
-    }
-    else if (index == 1) {
-        if (clockwise) {
-            tap_code(KC_PGDN);
-        } else {
-            tap_code(KC_PGUP);
-        }
-    }
-    return true;
-}
+// bool encoder_update_user(uint8_t index, bool clockwise) {
+//     if (index == 0) {
+//         if (clockwise) {
+//             tap_code(KC_VOLU);
+//         } else {
+//             tap_code(KC_VOLD);
+//         }
+//     }
+//     else if (index == 1) {
+//         if (clockwise) {
+//             tap_code(KC_PGDN);
+//         } else {
+//             tap_code(KC_PGUP);
+//         }
+//     }
+//     return true;
+// }
 
 
 /*
